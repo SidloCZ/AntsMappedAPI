@@ -23,10 +23,10 @@
   <meta name="twitter:description" content="Free community map engine and Flat-File JSON API for 15,460+ ant species and subspecies.">
   <meta name="twitter:image" content="https://sidlocz.github.io/AntsMappedAPI/demo_maps/Lasius_niger_equal_earth_dark_en.png">
 
-  <!-- Favicon (Inline SVG) -->
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%235865f2'%3E%3Cpath d='M19 13v-2c-1.54.02-3.09-.75-4.07-1.83l-1.29-1.43c-.4-.44-.97-.7-1.57-.7-.34 0-.67.08-.97.24L7.54 9.17C6.67 9.7 5.68 10 4.67 10H3v2h1.67c.68 0 1.34-.2 1.93-.56l1.24-.76-.74 3.32H5v2h2.51l.89-4 1.37.83L9 20h2l1.09-5.46 2.37 1.46H19v-2h-3.66l-2.07-1.27.42-1.91c.88.94 2.14 1.62 3.31 1.68V13zM12 2C10.9 2 10 2.9 10 4s.9 2 2 2 2-.9 2-2-.9-2-2-2z'/%3E%3C/svg%3E">
+  <!-- Favicon: Clean Monochromatic Map + Ant SVG -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none'%3E%3Cpath d='M2.5 6.5L8.5 4L15.5 6.5L21.5 4V17.5L15.5 20L8.5 17.5L2.5 20V6.5Z' stroke='%235865f2' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round' fill='%235865f2' fill-opacity='0.15'/%3E%3Cpath d='M8.5 4V17.5M15.5 6.5V20' stroke='%235865f2' stroke-width='1.3' stroke-linecap='round' stroke-dasharray='1.5 2'/%3E%3Cpath d='M10.2 7.2C9.2 5.6 7.6 4.9 6 5.2M13.8 7.2C14.8 5.6 16.4 4.9 18 5.2' stroke='%235865f2' stroke-width='1.25' stroke-linecap='round'/%3E%3Cellipse cx='12' cy='8.4' rx='1.6' ry='1.4' fill='%235865f2'/%3E%3Cpath d='M10.8 10.8L8 9.3L6 10.2M13.2 10.8L16 9.3L18 10.2' stroke='%235865f2' stroke-width='1.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cellipse cx='12' cy='11.8' rx='1.4' ry='1.9' fill='%235865f2'/%3E%3Cpath d='M10.6 12.2L7.2 12.5L5.2 14.2M13.4 12.2L16.8 12.5L18.8 14.2' stroke='%235865f2' stroke-width='1.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3Ccircle cx='12' cy='14.6' r='0.8' fill='%235865f2'/%3E%3Cpath d='M10.8 13.5L8.2 15.2L7 18.2M13.2 13.5L15.8 15.2L17 18.2' stroke='%235865f2' stroke-width='1.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cellipse cx='12' cy='17.6' rx='2.2' ry='2.7' fill='%235865f2'/%3E%3C/svg%3E">
 
-  <!-- Google Fonts: Inter -->
+  <!-- Google Fonts: Inter & JetBrains Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -75,8 +75,18 @@
   <header class="site-header">
     <div class="container nav-wrap">
       <a href="#" class="brand">
-        <svg class="icon icon-lg" viewBox="0 0 24 24" style="color: var(--accent-primary);">
-          <path d="M19 13v-2c-1.54.02-3.09-.75-4.07-1.83l-1.29-1.43c-.4-.44-.97-.7-1.57-.7-.34 0-.67.08-.97.24L7.54 9.17C6.67 9.7 5.68 10 4.67 10H3v2h1.67c.68 0 1.34-.2 1.93-.56l1.24-.76-.74 3.32H5v2h2.51l.89-4 1.37.83L9 20h2l1.09-5.46 2.37 1.46H19v-2h-3.66l-2.07-1.27.42-1.91c.88.94 2.14 1.62 3.31 1.68V13zM12 2C10.9 2 10 2.9 10 4s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>
+        <!-- Monochromatic SVG Logo: Folded Map with Clear Ant Silhouette -->
+        <svg class="icon icon-lg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="color: var(--accent-primary);">
+          <path d="M2.5 6.5L8.5 4L15.5 6.5L21.5 4V17.5L15.5 20L8.5 17.5L2.5 20V6.5Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="currentColor" fill-opacity="0.12"/>
+          <path d="M8.5 4V17.5M15.5 6.5V20" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-dasharray="1.5 2"/>
+          <path d="M10.2 7.2C9.2 5.6 7.6 4.9 6 5.2M13.8 7.2C14.8 5.6 16.4 4.9 18 5.2" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"/>
+          <ellipse cx="12" cy="8.4" rx="1.6" ry="1.4" fill="currentColor"/>
+          <path d="M10.8 10.8L8 9.3L6 10.2M13.2 10.8L16 9.3L18 10.2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+          <ellipse cx="12" cy="11.8" rx="1.4" ry="1.9" fill="currentColor"/>
+          <path d="M10.6 12.2L7.2 12.5L5.2 14.2M13.4 12.2L16.8 12.5L18.8 14.2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="12" cy="14.6" r="0.8" fill="currentColor"/>
+          <path d="M10.8 13.5L8.2 15.2L7 18.2M13.2 13.5L15.8 15.2L17 18.2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+          <ellipse cx="12" cy="17.6" rx="2.2" ry="2.7" fill="currentColor"/>
         </svg>
         <span>AntsMapped API</span>
         <span class="brand-badge">v1.1</span>
@@ -96,7 +106,7 @@
         </button>
 
         <!-- Theme Switcher -->
-        <button id="theme-toggle-btn" class="btn-icon" aria-label="Toggle dark/light theme" title="Přepnout motiv">
+        <button id="theme-toggle-btn" class="btn-icon" aria-label="Toggle dark/light theme" title="Přepnout motiv / Toggle theme">
           <svg class="icon icon-sm" viewBox="0 0 24 24">
             <path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"/>
           </svg>
@@ -117,11 +127,11 @@
   <section class="hero">
     <div class="hero-glow"></div>
     <div class="container">
-      <h1 class="hero-title">
+      <h1 class="hero-title" data-i18n-html-en="The Open-Source Ant Distribution Map Engine &amp; <br><span>Flat-File JSON API</span>" data-i18n-html-cs="Otevřený generátor map výskytu mravenců &amp; <br><span>Flat-File JSON API</span>">
         The Open-Source Ant Distribution Map Engine &amp; <br>
         <span>Flat-File JSON API</span>
       </h1>
-      <p class="hero-subtitle" data-i18n-en="High-performance biogeographical mapping for Discord bots, researchers, and web developers. Instant PNG rendering across 15,460+ ant taxa and 546 sub-national regions." data-i18n-cs="Vysoce výkonný mapový generátor a otevřené biogeografické API pro Discord boty, výzkumníky a webové vývojáře. Okamžité renderování pro 15 460+ taxonů mravenců v 546 regionech.">
+      <p class="hero-subtitle" data-i18n-en="High-performance biogeographical mapping for Discord bots, researchers, and web developers. Instant PNG rendering across 15,460+ ant taxa and 546 sub-national regions." data-i18n-cs="Vysoce výkonné biogeografické mapování pro Discord boty, výzkumníky a webové vývojáře. Okamžité renderování PNG pro 15 460+ taxonů mravenců v 546 sub-národních regionech.">
         High-performance biogeographical mapping for Discord bots, researchers, and web developers. Instant PNG rendering across 15,460+ ant taxa and 546 sub-national regions.
       </p>
 
@@ -136,11 +146,11 @@
         </div>
         <div class="stat-chip">
           <svg class="icon icon-sm" viewBox="0 0 24 24" style="color: var(--status-native);"><path d="M13 3c-4.97 0-9 4.03-9 9H1l3.89 3.89.07.14L9 12H6c0-3.87 3.13-7 7-7s7 3.13 7 7-3.13 7-7 7c-1.93 0-3.68-.79-4.94-2.06l-1.42 1.42C8.27 19.99 10.51 21 13 21c4.97 0 9-4.03 9-9s-4.03-9-9-9zm-1 5v5l4.28 2.54.72-1.21-3.5-2.08V8H12z"/></svg>
-          <span><strong>&lt; 5 ms</strong> <span data-i18n-en="Cache Response" data-i18n-cs="Odezva cache">Cache Response</span></span>
+          <span><strong>&lt; 5 ms</strong> <span data-i18n-en="Cache Response" data-i18n-cs="Odezva mezipaměti">Cache Response</span></span>
         </div>
         <div class="stat-chip">
           <svg class="icon icon-sm" viewBox="0 0 24 24" style="color: var(--status-indoor);"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/></svg>
-          <span><strong>100% Free</strong> &amp; Open Source</span>
+          <span data-i18n-html-en="<strong>100% Free</strong> &amp; Open Source" data-i18n-html-cs="<strong>100% zdarma</strong> &amp; Open Source"><strong>100% Free</strong> &amp; Open Source</span>
         </div>
       </div>
     </div>
@@ -154,8 +164,8 @@
           <svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
           <span data-i18n-en="Interactive Explorer" data-i18n-cs="Interaktivní průzkumník">Interactive Explorer</span>
         </div>
-        <h2 class="section-title" data-i18n-en="Live Ant Distribution Map Viewer" data-i18n-cs="Živý prohlížeč map rozšíření mravenců">Live Ant Distribution Map Viewer</h2>
-        <p class="section-desc" data-i18n-en="Search among 15,460+ ant taxa or 338 genera. Customize the map projection, color theme, and legend language in real-time." data-i18n-cs="Vyhledávejte mezi 15 460+ taxony mravenců nebo 338 rody. Přizpůsobte projekci, motiv i jazyk legendy v reálném čase.">
+        <h2 class="section-title" data-i18n-en="Live Ant Distribution Map Viewer" data-i18n-cs="Živý prohlížeč map výskytu mravenců">Live Ant Distribution Map Viewer</h2>
+        <p class="section-desc" data-i18n-en="Search among 15,460+ ant taxa or 338 genera. Customize the map projection, color theme, and legend language in real-time." data-i18n-cs="Vyhledávejte mezi 15 460+ taxony mravenců nebo 338 rody. Přizpůsobte si kartografickou projekci, barevný motiv i jazyk legendy v reálném čase.">
           Search among 15,460+ ant taxa or 338 genera. Customize the map projection, color theme, and legend language in real-time.
         </p>
       </div>
@@ -167,10 +177,27 @@
           <div class="search-box-wrap">
             <div class="search-input-group">
               <svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
-              <input type="text" id="taxon-search-input" class="search-input" placeholder="Type taxon name (e.g. Lasius niger, Formica, Solenopsis invicta)..." autocomplete="off" value="Lasius niger">
+              <input type="text" id="taxon-search-input" class="search-input" 
+                placeholder="Type taxon name (e.g. Lasius niger, Formica, Solenopsis invicta)..." 
+                data-i18n-placeholder-en="Type taxon name (e.g. Lasius niger, Formica, Solenopsis invicta)..."
+                data-i18n-placeholder-cs="Zadejte název taxonu (např. Lasius niger, Formica, Solenopsis invicta)..."
+                autocomplete="off" value="Lasius niger">
             </div>
             <!-- Live Autocomplete Dropdown List -->
             <div id="autocomplete-results" class="autocomplete-results"></div>
+          </div>
+
+          <!-- Quick Taxon Chips for fast demonstration -->
+          <div class="quick-chips-wrap">
+            <span class="quick-chips-label" data-i18n-en="Quick Pick:" data-i18n-cs="Rychlý výběr:">Quick Pick:</span>
+            <button type="button" class="quick-chip active" data-taxon="Lasius niger" data-rank="species" data-genus="false"><em>Lasius niger</em></button>
+            <button type="button" class="quick-chip" data-taxon="Lasius" data-rank="genus" data-genus="true"><em>Lasius</em> spp.</button>
+            <button type="button" class="quick-chip" data-taxon="Formica rufa" data-rank="species" data-genus="false"><em>Formica rufa</em></button>
+            <button type="button" class="quick-chip" data-taxon="Camponotus ligniperda" data-rank="species" data-genus="false"><em>Camponotus ligniperda</em></button>
+            <button type="button" class="quick-chip" data-taxon="Camponotus" data-rank="genus" data-genus="true"><em>Camponotus</em> spp.</button>
+            <button type="button" class="quick-chip" data-taxon="Solenopsis invicta" data-rank="species" data-genus="false"><em>Solenopsis invicta</em></button>
+            <button type="button" class="quick-chip" data-taxon="Linepithema humile" data-rank="species" data-genus="false"><em>Linepithema humile</em></button>
+            <button type="button" class="quick-chip" data-taxon="Oecophylla smaragdina" data-rank="species" data-genus="false"><em>Oecophylla smaragdina</em></button>
           </div>
 
           <!-- Parameter Selectors -->
@@ -189,8 +216,8 @@
             <div class="param-group">
               <span class="param-label" data-i18n-en="Theme" data-i18n-cs="Barevný motiv">Theme</span>
               <div class="segmented-control" data-param="theme">
-                <button class="segment-btn active" data-value="dark">Dark (Discord)</button>
-                <button class="segment-btn" data-value="light">Light</button>
+                <button class="segment-btn active" data-value="dark" data-i18n-en="Dark (Discord)" data-i18n-cs="Tmavý (Discord)">Dark (Discord)</button>
+                <button class="segment-btn" data-value="light" data-i18n-en="Light" data-i18n-cs="Světlý">Light</button>
               </div>
             </div>
 
@@ -198,8 +225,8 @@
             <div class="param-group">
               <span class="param-label" data-i18n-en="Legend Language" data-i18n-cs="Jazyk legendy">Legend Language</span>
               <div class="segmented-control" data-param="lang">
-                <button class="segment-btn active" data-value="en">English</button>
-                <button class="segment-btn" data-value="cs">Čeština</button>
+                <button class="segment-btn active" data-value="en" data-i18n-en="English" data-i18n-cs="Angličtina">English</button>
+                <button class="segment-btn" data-value="cs" data-i18n-en="Czech" data-i18n-cs="Čeština">Czech</button>
               </div>
             </div>
 
@@ -207,9 +234,9 @@
             <div class="server-target-group">
               <label for="server-target-select" class="param-label" data-i18n-en="API Source:" data-i18n-cs="Zdroj API:">API Source:</label>
               <select id="server-target-select" class="server-select">
-                <option value="demo">GitHub Pages Pre-rendered</option>
-                <option value="hf">Hugging Face Cloud API</option>
-                <option value="local">Localhost (port 8000)</option>
+                <option value="demo" data-i18n-en="GitHub Pages Pre-rendered" data-i18n-cs="Předgenerované mapy (GitHub Pages)">GitHub Pages Pre-rendered</option>
+                <option value="hf" data-i18n-en="Hugging Face Cloud API" data-i18n-cs="Cloudové API (Hugging Face)">Hugging Face Cloud API</option>
+                <option value="local" data-i18n-en="Localhost (port 8000)" data-i18n-cs="Lokální server (port 8000)">Localhost (port 8000)</option>
               </select>
             </div>
           </div>
@@ -223,6 +250,7 @@
               <span data-i18n-en="Rendering ant distribution map..." data-i18n-cs="Vykresluji mapu výskytu mravenců...">Rendering ant distribution map...</span>
             </div>
             <img id="map-preview-img" class="map-img" src="demo_maps/Lasius_niger_equal_earth_dark_en.png" alt="Distribution map preview">
+            <div id="map-notice-badge" class="map-notice-badge" style="display: none;"></div>
           </div>
 
           <!-- Details Sidebar -->
@@ -260,7 +288,7 @@
     </div>
   </section>
 
-  <!-- Section 2: Complete Interactive API Reference -->
+  <!-- Section 2: Complete Interactive API Reference with Try-It-Out Consoles -->
   <section id="endpoints" class="section">
     <div class="container">
       <div class="section-header">
@@ -269,8 +297,8 @@
           <span data-i18n-en="API Reference" data-i18n-cs="Dokumentace API">API Reference</span>
         </div>
         <h2 class="section-title" data-i18n-en="RESTful API Endpoints" data-i18n-cs="Endpointy RESTful API">RESTful API Endpoints</h2>
-        <p class="section-desc" data-i18n-en="All endpoints return standard HTTP responses with CORS enabled, browser and CDN cache headers, and high-performance in-memory rendering." data-i18n-cs="Všechny endpointy vracejí standardní HTTP odpovědi s povoleným CORS, mezipamětí pro CDN a bleskovým in-memory renderováním.">
-          All endpoints return standard HTTP responses with CORS enabled, browser and CDN cache headers, and high-performance in-memory rendering.
+        <p class="section-desc" data-i18n-en="All endpoints return standard HTTP responses with CORS enabled, browser and CDN cache headers, and high-performance in-memory rendering. Test any endpoint live directly in the console below." data-i18n-cs="Všechny endpointy vracejí standardní HTTP odpovědi s povoleným CORS, mezipamětí pro CDN a bleskovým in-memory renderováním. Vyzkoušejte jakýkoliv endpoint naživo přímo v konzoli níže.">
+          All endpoints return standard HTTP responses with CORS enabled, browser and CDN cache headers, and high-performance in-memory rendering. Test any endpoint live directly in the console below.
         </p>
       </div>
 
@@ -285,43 +313,131 @@
             Dynamically renders and returns a high-resolution PNG distribution map for any ant species or subspecies.
           </p>
 
+          <div class="endpoint-subheading" data-i18n-en="Parameters" data-i18n-cs="Parametry">Parameters</div>
           <div class="table-wrap">
             <table class="param-table">
               <thead>
                 <tr>
-                  <th>Parameter</th>
-                  <th>Type</th>
-                  <th>Default</th>
-                  <th>Description</th>
+                  <th data-i18n-en="Parameter" data-i18n-cs="Parametr">Parameter</th>
+                  <th data-i18n-en="In / Type" data-i18n-cs="Umístění / Typ">In / Type</th>
+                  <th data-i18n-en="Default" data-i18n-cs="Výchozí">Default</th>
+                  <th data-i18n-en="Description" data-i18n-cs="Popis">Description</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td><strong>species_name</strong></td>
+                  <td><strong>species_name</strong> <span class="badge-req" data-i18n-en="required" data-i18n-cs="povinné">required</span></td>
                   <td>path string</td>
-                  <td><em>required</em></td>
-                  <td>Scientific binomial or trinomial name (e.g. <code>Lasius_niger</code>, <code>Formica_picea_formosae</code>).</td>
+                  <td>&mdash;</td>
+                  <td data-i18n-en="Scientific binomial or trinomial name (e.g. Lasius_niger, Formica_picea_formosae)." data-i18n-cs="Vědecký binomický nebo trinomický název druhu či poddruhu (např. Lasius_niger, Formica_picea_formosae).">Scientific binomial or trinomial name (e.g. <code>Lasius_niger</code>, <code>Formica_picea_formosae</code>).</td>
                 </tr>
                 <tr>
-                  <td><strong>proj</strong></td>
+                  <td><strong>proj</strong> <span class="badge-opt" data-i18n-en="optional" data-i18n-cs="volitelné">optional</span></td>
                   <td>query string</td>
                   <td><code>equal_earth</code></td>
-                  <td>Cartographic projection: <code>equal_earth</code>, <code>plate_carree</code>, <code>mercator</code>.</td>
+                  <td data-i18n-en="Cartographic projection: equal_earth, plate_carree, mercator." data-i18n-cs="Kartografická projekce: equal_earth, plate_carree, mercator.">Cartographic projection: <code>equal_earth</code>, <code>plate_carree</code>, <code>mercator</code>.</td>
                 </tr>
                 <tr>
-                  <td><strong>theme</strong></td>
+                  <td><strong>theme</strong> <span class="badge-opt" data-i18n-en="optional" data-i18n-cs="volitelné">optional</span></td>
                   <td>query string</td>
                   <td><code>dark</code></td>
-                  <td>Color theme: <code>dark</code> (optimized for Discord) or <code>light</code> (publication white).</td>
+                  <td data-i18n-en="Color theme: dark (Discord-optimized #1e1f22) or light (publication white)." data-i18n-cs="Barevný motiv: dark (Discord #1e1f22) nebo light (publikační bílý).">Color theme: <code>dark</code> (Discord-optimized) or <code>light</code> (publication white).</td>
                 </tr>
                 <tr>
-                  <td><strong>lang</strong></td>
+                  <td><strong>lang</strong> <span class="badge-opt" data-i18n-en="optional" data-i18n-cs="volitelné">optional</span></td>
                   <td>query string</td>
                   <td><code>en</code></td>
-                  <td>Legend language: <code>en</code> (English) or <code>cs</code> (Čeština).</td>
+                  <td data-i18n-en="Legend language: en (English) or cs (Czech)." data-i18n-cs="Jazyk legendy: en (angličtina) nebo cs (čeština).">Legend language: <code>en</code> (English) or <code>cs</code> (Czech).</td>
                 </tr>
               </tbody>
             </table>
+          </div>
+
+          <div class="endpoint-subheading" data-i18n-en="Status Codes &amp; Headers" data-i18n-cs="Stavové kódy a hlavičky">Status Codes &amp; Headers</div>
+          <div class="table-wrap">
+            <table class="param-table">
+              <thead>
+                <tr>
+                  <th data-i18n-en="Status" data-i18n-cs="Kód">Status</th>
+                  <th data-i18n-en="Content-Type" data-i18n-cs="Typ obsahu">Content-Type</th>
+                  <th data-i18n-en="Description" data-i18n-cs="Popis">Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><span class="badge-status status-200">200 OK</span></td>
+                  <td><code>image/png</code></td>
+                  <td data-i18n-en="Distribution map successfully rendered (Cache-Control: public, max-age=86400)." data-i18n-cs="Mapa rozšíření úspěšně vyrenderována (Cache-Control: public, max-age=86400).">Distribution map successfully rendered (<code>Cache-Control: public, max-age=86400</code>).</td>
+                </tr>
+                <tr>
+                  <td><span class="badge-status status-404">404 Not Found</span></td>
+                  <td><code>application/json</code></td>
+                  <td data-i18n-en="Species not found in the GABI ant distribution database." data-i18n-cs="Druh nebyl v databázi rozšíření mravenců GABI nalezen.">Species not found in the GABI ant distribution database.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Interactive Try It Out Console -->
+          <div class="try-console" data-endpoint-type="species-map">
+            <div class="try-console-header">
+              <div class="try-console-title">
+                <svg class="icon icon-sm" viewBox="0 0 24 24" style="color: var(--accent-primary);"><path d="M8 5v14l11-7z"/></svg>
+                <span data-i18n-en="Try It Out Console" data-i18n-cs="Interaktivní vyzkoušení API">Try It Out Console</span>
+              </div>
+              <span class="meta-chip">GET /map/{species_name}.png</span>
+            </div>
+            <div class="try-form">
+              <div class="try-inputs-grid">
+                <div class="try-field">
+                  <label for="try-species-name">species_name:</label>
+                  <input type="text" id="try-species-name" class="try-input" value="Lasius_niger">
+                </div>
+                <div class="try-field">
+                  <label for="try-species-proj">proj:</label>
+                  <select id="try-species-proj" class="try-select">
+                    <option value="equal_earth">equal_earth</option>
+                    <option value="plate_carree">plate_carree</option>
+                    <option value="mercator">mercator</option>
+                  </select>
+                </div>
+                <div class="try-field">
+                  <label for="try-species-theme">theme:</label>
+                  <select id="try-species-theme" class="try-select">
+                    <option value="dark">dark</option>
+                    <option value="light">light</option>
+                  </select>
+                </div>
+                <div class="try-field">
+                  <label for="try-species-lang">lang:</label>
+                  <select id="try-species-lang" class="try-select">
+                    <option value="en">en</option>
+                    <option value="cs">cs</option>
+                  </select>
+                </div>
+              </div>
+              <div class="try-actions">
+                <button type="button" class="btn-try" data-action="run-species-map">
+                  <svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                  <span data-i18n-en="Send Request" data-i18n-cs="Odeslat požadavek">Send Request</span>
+                </button>
+              </div>
+            </div>
+            <div id="try-result-species-map" class="try-result-area">
+              <div class="try-result-meta">
+                <div class="try-meta-chips">
+                  <span class="badge-status status-200">200 OK</span>
+                  <span class="meta-chip">image/png</span>
+                  <span class="meta-chip" id="try-latency-species-map">~12 ms</span>
+                </div>
+                <a id="try-link-species-map" href="#" target="_blank" class="doi-link" style="font-size: 0.75rem;">
+                  <span data-i18n-en="Open Direct URL" data-i18n-cs="Otevřít přímou URL">Open Direct URL</span> &rarr;
+                </a>
+              </div>
+              <div class="try-result-content">
+                <img id="try-img-species-map" class="try-img-preview" src="" alt="Rendered map">
+              </div>
+            </div>
           </div>
         </div>
 
@@ -334,6 +450,108 @@
           <p class="endpoint-desc" data-i18n-en="Returns an aggregated global distribution map of all species and records within the specified genus." data-i18n-cs="Vrací agregovanou celosvětovou mapu rozšíření všech druhů a záznamů v daném rodu.">
             Returns an aggregated global distribution map of all species and records within the specified genus.
           </p>
+
+          <div class="endpoint-subheading" data-i18n-en="Parameters" data-i18n-cs="Parametry">Parameters</div>
+          <div class="table-wrap">
+            <table class="param-table">
+              <thead>
+                <tr>
+                  <th data-i18n-en="Parameter" data-i18n-cs="Parametr">Parameter</th>
+                  <th data-i18n-en="In / Type" data-i18n-cs="Umístění / Typ">In / Type</th>
+                  <th data-i18n-en="Default" data-i18n-cs="Výchozí">Default</th>
+                  <th data-i18n-en="Description" data-i18n-cs="Popis">Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>genus_name</strong> <span class="badge-req" data-i18n-en="required" data-i18n-cs="povinné">required</span></td>
+                  <td>path string</td>
+                  <td>&mdash;</td>
+                  <td data-i18n-en="Ant genus name (e.g. Camponotus, Lasius, Formica, Myrmica)." data-i18n-cs="Vědecký název rodu mravenců (např. Camponotus, Lasius, Formica, Myrmica).">Ant genus name (e.g. <code>Camponotus</code>, <code>Lasius</code>, <code>Formica</code>, <code>Myrmica</code>).</td>
+                </tr>
+                <tr>
+                  <td><strong>proj</strong> <span class="badge-opt" data-i18n-en="optional" data-i18n-cs="volitelné">optional</span></td>
+                  <td>query string</td>
+                  <td><code>equal_earth</code></td>
+                  <td data-i18n-en="Cartographic projection: equal_earth, plate_carree, mercator." data-i18n-cs="Kartografická projekce: equal_earth, plate_carree, mercator.">Cartographic projection: <code>equal_earth</code>, <code>plate_carree</code>, <code>mercator</code>.</td>
+                </tr>
+                <tr>
+                  <td><strong>theme</strong> <span class="badge-opt" data-i18n-en="optional" data-i18n-cs="volitelné">optional</span></td>
+                  <td>query string</td>
+                  <td><code>dark</code></td>
+                  <td data-i18n-en="Color theme: dark (Discord-ready) or light." data-i18n-cs="Barevný motiv: dark (pro Discord) nebo light.">Color theme: <code>dark</code> or <code>light</code>.</td>
+                </tr>
+                <tr>
+                  <td><strong>lang</strong> <span class="badge-opt" data-i18n-en="optional" data-i18n-cs="volitelné">optional</span></td>
+                  <td>query string</td>
+                  <td><code>en</code></td>
+                  <td data-i18n-en="Legend language: en (English) or cs (Czech)." data-i18n-cs="Jazyk legendy: en (angličtina) nebo cs (čeština).">Legend language: <code>en</code> (English) or <code>cs</code> (Czech).</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Interactive Try It Out Console -->
+          <div class="try-console" data-endpoint-type="genus-map">
+            <div class="try-console-header">
+              <div class="try-console-title">
+                <svg class="icon icon-sm" viewBox="0 0 24 24" style="color: var(--accent-primary);"><path d="M8 5v14l11-7z"/></svg>
+                <span data-i18n-en="Try It Out Console" data-i18n-cs="Interaktivní vyzkoušení API">Try It Out Console</span>
+              </div>
+              <span class="meta-chip">GET /map/genus/{genus_name}.png</span>
+            </div>
+            <div class="try-form">
+              <div class="try-inputs-grid">
+                <div class="try-field">
+                  <label for="try-genus-name">genus_name:</label>
+                  <input type="text" id="try-genus-name" class="try-input" value="Camponotus">
+                </div>
+                <div class="try-field">
+                  <label for="try-genus-proj">proj:</label>
+                  <select id="try-genus-proj" class="try-select">
+                    <option value="equal_earth">equal_earth</option>
+                    <option value="plate_carree">plate_carree</option>
+                    <option value="mercator">mercator</option>
+                  </select>
+                </div>
+                <div class="try-field">
+                  <label for="try-genus-theme">theme:</label>
+                  <select id="try-genus-theme" class="try-select">
+                    <option value="dark">dark</option>
+                    <option value="light">light</option>
+                  </select>
+                </div>
+                <div class="try-field">
+                  <label for="try-genus-lang">lang:</label>
+                  <select id="try-genus-lang" class="try-select">
+                    <option value="en">en</option>
+                    <option value="cs">cs</option>
+                  </select>
+                </div>
+              </div>
+              <div class="try-actions">
+                <button type="button" class="btn-try" data-action="run-genus-map">
+                  <svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                  <span data-i18n-en="Send Request" data-i18n-cs="Odeslat požadavek">Send Request</span>
+                </button>
+              </div>
+            </div>
+            <div id="try-result-genus-map" class="try-result-area">
+              <div class="try-result-meta">
+                <div class="try-meta-chips">
+                  <span class="badge-status status-200">200 OK</span>
+                  <span class="meta-chip">image/png</span>
+                  <span class="meta-chip" id="try-latency-genus-map">~15 ms</span>
+                </div>
+                <a id="try-link-genus-map" href="#" target="_blank" class="doi-link" style="font-size: 0.75rem;">
+                  <span data-i18n-en="Open Direct URL" data-i18n-cs="Otevřít přímou URL">Open Direct URL</span> &rarr;
+                </a>
+              </div>
+              <div class="try-result-content">
+                <img id="try-img-genus-map" class="try-img-preview" src="" alt="Rendered genus map">
+              </div>
+            </div>
+          </div>
         </div>
 
         <!-- Endpoint 3: Distribution JSON -->
@@ -342,9 +560,72 @@
             <span class="http-method method-get">GET</span>
             <span class="endpoint-path">/api/v1/distribution/{species_name}</span>
           </div>
-          <p class="endpoint-desc" data-i18n-en="Returns structured JSON with all sub-national biogeographic regions (GABI bentities) and establishment status." data-i18n-cs="Vrací strukturovaný JSON se všemi biogeografickými celky (GABI bentities) a jejich statusem původnosti.">
+          <p class="endpoint-desc" data-i18n-en="Returns structured JSON with all sub-national biogeographic regions (GABI bentities) and establishment status." data-i18n-cs="Vrací strukturovaný JSON se všemi sub-národními biogeografickými celky (GABI bentities) a jejich statusem výskytu.">
             Returns structured JSON with all sub-national biogeographic regions (GABI bentities) and establishment status.
           </p>
+
+          <div class="endpoint-subheading" data-i18n-en="Parameters" data-i18n-cs="Parametry">Parameters</div>
+          <div class="table-wrap">
+            <table class="param-table">
+              <thead>
+                <tr>
+                  <th data-i18n-en="Parameter" data-i18n-cs="Parametr">Parameter</th>
+                  <th data-i18n-en="In / Type" data-i18n-cs="Umístění / Typ">In / Type</th>
+                  <th data-i18n-en="Default" data-i18n-cs="Výchozí">Default</th>
+                  <th data-i18n-en="Description" data-i18n-cs="Popis">Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>species_name</strong> <span class="badge-req" data-i18n-en="required" data-i18n-cs="povinné">required</span></td>
+                  <td>path string</td>
+                  <td>&mdash;</td>
+                  <td data-i18n-en="Scientific binomial or trinomial name (e.g. Lasius_niger)." data-i18n-cs="Vědecký název druhu či poddruhu (např. Lasius_niger).">Scientific binomial or trinomial name (e.g. <code>Lasius_niger</code>).</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Interactive Try It Out Console -->
+          <div class="try-console" data-endpoint-type="dist-json">
+            <div class="try-console-header">
+              <div class="try-console-title">
+                <svg class="icon icon-sm" viewBox="0 0 24 24" style="color: var(--accent-primary);"><path d="M8 5v14l11-7z"/></svg>
+                <span data-i18n-en="Try It Out Console" data-i18n-cs="Interaktivní vyzkoušení API">Try It Out Console</span>
+              </div>
+              <span class="meta-chip">GET /api/v1/distribution/{species_name}</span>
+            </div>
+            <div class="try-form">
+              <div class="try-inputs-grid">
+                <div class="try-field">
+                  <label for="try-dist-species">species_name:</label>
+                  <input type="text" id="try-dist-species" class="try-input" value="Lasius_niger">
+                </div>
+              </div>
+              <div class="try-actions">
+                <button type="button" class="btn-try" data-action="run-dist-json">
+                  <svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                  <span data-i18n-en="Send Request" data-i18n-cs="Odeslat požadavek">Send Request</span>
+                </button>
+              </div>
+            </div>
+            <div id="try-result-dist-json" class="try-result-area">
+              <div class="try-result-meta">
+                <div class="try-meta-chips">
+                  <span class="badge-status status-200">200 OK</span>
+                  <span class="meta-chip">application/json</span>
+                  <span class="meta-chip" id="try-latency-dist-json">~4 ms</span>
+                </div>
+                <button type="button" class="btn-copy" id="try-copy-dist-json">
+                  <svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+                  <span data-i18n-en="Copy JSON" data-i18n-cs="Kopírovat JSON">Copy JSON</span>
+                </button>
+              </div>
+              <div class="try-result-content">
+                <pre><code id="try-code-dist-json"></code></pre>
+              </div>
+            </div>
+          </div>
         </div>
 
         <!-- Endpoint 4: Search -->
@@ -356,6 +637,79 @@
           <p class="endpoint-desc" data-i18n-en="Fulltext autocomplete search across all 15,460+ ant species and subspecies." data-i18n-cs="Fulltextové vyhledávání a našeptávač přes všech 15 460+ druhů a poddruhů mravenců.">
             Fulltext autocomplete search across all 15,460+ ant species and subspecies.
           </p>
+
+          <div class="endpoint-subheading" data-i18n-en="Parameters" data-i18n-cs="Parametry">Parameters</div>
+          <div class="table-wrap">
+            <table class="param-table">
+              <thead>
+                <tr>
+                  <th data-i18n-en="Parameter" data-i18n-cs="Parametr">Parameter</th>
+                  <th data-i18n-en="In / Type" data-i18n-cs="Umístění / Typ">In / Type</th>
+                  <th data-i18n-en="Default" data-i18n-cs="Výchozí">Default</th>
+                  <th data-i18n-en="Description" data-i18n-cs="Popis">Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>q</strong> <span class="badge-req" data-i18n-en="required" data-i18n-cs="povinné">required</span></td>
+                  <td>query string</td>
+                  <td>&mdash;</td>
+                  <td data-i18n-en="Search query substring or abbreviation (e.g. Lasius, niger, L. niger)." data-i18n-cs="Hledaný text nebo zkratka taxonu (např. Lasius, niger, L. niger).">Search query substring or abbreviation (e.g. <code>Lasius</code>, <code>niger</code>, <code>L. niger</code>).</td>
+                </tr>
+                <tr>
+                  <td><strong>limit</strong> <span class="badge-opt" data-i18n-en="optional" data-i18n-cs="volitelné">optional</span></td>
+                  <td>query integer</td>
+                  <td><code>20</code></td>
+                  <td data-i18n-en="Maximum number of search results to return (1 to 100)." data-i18n-cs="Maximální počet vrácených výsledků (1 až 100).">Maximum number of search results to return (1 to 100).</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Interactive Try It Out Console -->
+          <div class="try-console" data-endpoint-type="search-api">
+            <div class="try-console-header">
+              <div class="try-console-title">
+                <svg class="icon icon-sm" viewBox="0 0 24 24" style="color: var(--accent-primary);"><path d="M8 5v14l11-7z"/></svg>
+                <span data-i18n-en="Try It Out Console" data-i18n-cs="Interaktivní vyzkoušení API">Try It Out Console</span>
+              </div>
+              <span class="meta-chip">GET /api/v1/search</span>
+            </div>
+            <div class="try-form">
+              <div class="try-inputs-grid">
+                <div class="try-field">
+                  <label for="try-search-q">q (query):</label>
+                  <input type="text" id="try-search-q" class="try-input" value="Lasius">
+                </div>
+                <div class="try-field">
+                  <label for="try-search-limit">limit:</label>
+                  <input type="number" id="try-search-limit" class="try-input" value="5" min="1" max="100">
+                </div>
+              </div>
+              <div class="try-actions">
+                <button type="button" class="btn-try" data-action="run-search-api">
+                  <svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                  <span data-i18n-en="Send Request" data-i18n-cs="Odeslat požadavek">Send Request</span>
+                </button>
+              </div>
+            </div>
+            <div id="try-result-search-api" class="try-result-area">
+              <div class="try-result-meta">
+                <div class="try-meta-chips">
+                  <span class="badge-status status-200">200 OK</span>
+                  <span class="meta-chip">application/json</span>
+                  <span class="meta-chip" id="try-latency-search-api">~2 ms</span>
+                </div>
+                <button type="button" class="btn-copy" id="try-copy-search-api">
+                  <svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+                  <span data-i18n-en="Copy JSON" data-i18n-cs="Kopírovat JSON">Copy JSON</span>
+                </button>
+              </div>
+              <div class="try-result-content">
+                <pre><code id="try-code-search-api"></code></pre>
+              </div>
+            </div>
+          </div>
         </div>
 
         <!-- Endpoint 5: Citations -->
@@ -367,6 +721,41 @@
           <p class="endpoint-desc" data-i18n-en="Returns required scientific citations and licensing metadata for Kass et al. (2022) and Wong et al. (2023)." data-i18n-cs="Vrací povinné vědecké citace a licenční metadata pro studie Kass et al. (2022) a Wong et al. (2023).">
             Returns required scientific citations and licensing metadata for Kass et al. (2022) and Wong et al. (2023).
           </p>
+
+          <!-- Interactive Try It Out Console -->
+          <div class="try-console" data-endpoint-type="citations-api">
+            <div class="try-console-header">
+              <div class="try-console-title">
+                <svg class="icon icon-sm" viewBox="0 0 24 24" style="color: var(--accent-primary);"><path d="M8 5v14l11-7z"/></svg>
+                <span data-i18n-en="Try It Out Console" data-i18n-cs="Interaktivní vyzkoušení API">Try It Out Console</span>
+              </div>
+              <span class="meta-chip">GET /api/v1/citations</span>
+            </div>
+            <div class="try-form">
+              <div class="try-actions">
+                <button type="button" class="btn-try" data-action="run-citations-api">
+                  <svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                  <span data-i18n-en="Send Request" data-i18n-cs="Odeslat požadavek">Send Request</span>
+                </button>
+              </div>
+            </div>
+            <div id="try-result-citations-api" class="try-result-area">
+              <div class="try-result-meta">
+                <div class="try-meta-chips">
+                  <span class="badge-status status-200">200 OK</span>
+                  <span class="meta-chip">application/json</span>
+                  <span class="meta-chip" id="try-latency-citations-api">~1 ms</span>
+                </div>
+                <button type="button" class="btn-copy" id="try-copy-citations-api">
+                  <svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+                  <span data-i18n-en="Copy JSON" data-i18n-cs="Kopírovat JSON">Copy JSON</span>
+                </button>
+              </div>
+              <div class="try-result-content">
+                <pre><code id="try-code-citations-api"></code></pre>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -424,46 +813,64 @@
       <div class="citations-grid">
         <!-- Citation 1: Kass 2022 -->
         <div class="citation-card">
-          <span class="citation-source">GABI Database (Kass et al. 2022)</span>
+          <span class="citation-source" data-i18n-en="GABI Database (Kass et al. 2022)" data-i18n-cs="Databáze GABI (Kass et al. 2022)">GABI Database (Kass et al. 2022)</span>
           <p class="citation-text">
             Kass, J. M., Guénard, B., Dudley, K. L., Jenkins, C. N., Azuma, F., Fisher, B. L., Parr, C. L., Phang, D. E., Schultheiss, P., Shattuck, S. O., Suhr, E. L., &amp; Economo, E. P. (2022). The global distribution of known and undiscovered ant biodiversity. <em>Science Advances</em>, 8(31), eabp9908.
           </p>
+          <div class="citation-doi">
+            <a href="https://www.science.org/doi/10.1126/sciadv.abp9908" target="_blank" rel="noopener noreferrer" class="doi-link">
+              <svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg>
+              <span>doi: 10.1126/sciadv.abp9908</span>
+            </a>
+          </div>
           <div class="citation-actions">
             <button class="btn-copy btn-copy-citation" data-cite-type="apa-kass">
               <svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
-              <span>Copy APA</span>
+              <span data-i18n-en="Copy APA" data-i18n-cs="Kopírovat APA">Copy APA</span>
             </button>
             <button class="btn-copy btn-copy-citation" data-cite-type="bibtex-kass">
               <svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
-              <span>Copy BibTeX</span>
+              <span data-i18n-en="Copy BibTeX" data-i18n-cs="Kopírovat BibTeX">Copy BibTeX</span>
             </button>
           </div>
         </div>
 
         <!-- Citation 2: Wong 2023 -->
         <div class="citation-card">
-          <span class="citation-source">Alien Ant Species (Wong et al. 2023)</span>
+          <span class="citation-source" data-i18n-en="Alien Ant Species (Wong et al. 2023)" data-i18n-cs="Zavlečené druhy mravenců (Wong et al. 2023)">Alien Ant Species (Wong et al. 2023)</span>
           <p class="citation-text">
             Wong, M. K. L., Economo, E. P., &amp; Guénard, B. (2023). The global spread and drivers of alien ant species. <em>Nature Communications</em>, 14, 8398.
           </p>
+          <div class="citation-doi">
+            <a href="https://doi.org/10.1016/j.cub.2022.12.020" target="_blank" rel="noopener noreferrer" class="doi-link">
+              <svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg>
+              <span>doi: 10.1016/j.cub.2022.12.020</span>
+            </a>
+          </div>
           <div class="citation-actions">
             <button class="btn-copy btn-copy-citation" data-cite-type="apa-wong">
               <svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
-              <span>Copy APA</span>
+              <span data-i18n-en="Copy APA" data-i18n-cs="Kopírovat APA">Copy APA</span>
             </button>
           </div>
         </div>
 
         <!-- Citation 3: Savric 2018 -->
         <div class="citation-card">
-          <span class="citation-source">Equal Earth Projection (Šavrič et al. 2018)</span>
+          <span class="citation-source" data-i18n-en="Equal Earth Projection (Šavrič et al. 2018)" data-i18n-cs="Equal Earth projekce (Šavrič et al. 2018)">Equal Earth Projection (Šavrič et al. 2018)</span>
           <p class="citation-text">
             Šavrič, B., Patterson, T., &amp; Jenny, B. (2018). The Equal Earth map projection. <em>International Journal of Geographical Information Science</em>, 33(3), 454–465.
           </p>
+          <div class="citation-doi">
+            <a href="https://doi.org/10.1080/13658816.2018.1504949" target="_blank" rel="noopener noreferrer" class="doi-link">
+              <svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg>
+              <span>doi: 10.1080/13658816.2018.1504949</span>
+            </a>
+          </div>
           <div class="citation-actions">
             <button class="btn-copy btn-copy-citation" data-cite-type="apa-savric">
               <svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
-              <span>Copy APA</span>
+              <span data-i18n-en="Copy APA" data-i18n-cs="Kopírovat APA">Copy APA</span>
             </button>
           </div>
         </div>
@@ -478,7 +885,7 @@
             When sending maps to Discord via bot embeds, you must include the following attribution in the embed footer:
           </p>
           <div style="margin-top: 0.75rem; display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap;">
-            <code style="background: var(--bg-card); padding: 0.35rem 0.65rem; border-radius: 0.35rem; font-family: var(--font-mono); font-size: 0.85rem; border: 1px solid var(--border-color);">Data: GABI (Kass et al. 2022, Wong et al. 2023) | API: AntsMappedAPI</code>
+            <code style="background: var(--bg-card); padding: 0.35rem 0.65rem; border-radius: 0.35rem; font-family: var(--font-mono); font-size: 0.85rem; border: 1px solid var(--border-color);">Data: Kass et al. 2022, Wong et al. 2023 | AntsMappedAPI</code>
             <button class="btn-copy btn-copy-citation" data-cite-type="discord-footer">
               <svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
               <span data-i18n-en="Copy Footer Text" data-i18n-cs="Kopírovat text patičky">Copy Footer Text</span>
@@ -495,29 +902,39 @@
       <div class="footer-grid">
         <div>
           <div class="brand" style="margin-bottom: 0.5rem;">
-            <svg class="icon icon-lg" viewBox="0 0 24 24" style="color: var(--accent-primary);">
-              <path d="M19 13v-2c-1.54.02-3.09-.75-4.07-1.83l-1.29-1.43c-.4-.44-.97-.7-1.57-.7-.34 0-.67.08-.97.24L7.54 9.17C6.67 9.7 5.68 10 4.67 10H3v2h1.67c.68 0 1.34-.2 1.93-.56l1.24-.76-.74 3.32H5v2h2.51l.89-4 1.37.83L9 20h2l1.09-5.46 2.37 1.46H19v-2h-3.66l-2.07-1.27.42-1.91c.88.94 2.14 1.62 3.31 1.68V13zM12 2C10.9 2 10 2.9 10 4s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>
+            <!-- Monochromatic SVG Logo in Footer -->
+            <svg class="icon icon-lg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="color: var(--accent-primary);">
+              <path d="M2.5 6.5L8.5 4L15.5 6.5L21.5 4V17.5L15.5 20L8.5 17.5L2.5 20V6.5Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="currentColor" fill-opacity="0.12"/>
+              <path d="M8.5 4V17.5M15.5 6.5V20" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-dasharray="1.5 2"/>
+              <path d="M10.2 7.2C9.2 5.6 7.6 4.9 6 5.2M13.8 7.2C14.8 5.6 16.4 4.9 18 5.2" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"/>
+              <ellipse cx="12" cy="8.4" rx="1.6" ry="1.4" fill="currentColor"/>
+              <path d="M10.8 10.8L8 9.3L6 10.2M13.2 10.8L16 9.3L18 10.2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+              <ellipse cx="12" cy="11.8" rx="1.4" ry="1.9" fill="currentColor"/>
+              <path d="M10.6 12.2L7.2 12.5L5.2 14.2M13.4 12.2L16.8 12.5L18.8 14.2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="12" cy="14.6" r="0.8" fill="currentColor"/>
+              <path d="M10.8 13.5L8.2 15.2L7 18.2M13.2 13.5L15.8 15.2L17 18.2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+              <ellipse cx="12" cy="17.6" rx="2.2" ry="2.7" fill="currentColor"/>
             </svg>
             <span>AntsMapped API</span>
           </div>
-          <p style="color: var(--text-muted); font-size: 0.85rem;">
+          <p style="color: var(--text-muted); font-size: 0.85rem;" data-i18n-en="Free, community-driven ant distribution mapping engine &amp; public Flat-File API." data-i18n-cs="Bezplatný komunitní generátor map výskytu mravenců a otevřené Flat-File API.">
             Free, community-driven ant distribution mapping engine &amp; public Flat-File API.
           </p>
         </div>
 
         <div>
           <ul class="nav-links">
-            <li><a href="#explorer" class="nav-link">Explorer</a></li>
-            <li><a href="#endpoints" class="nav-link">Endpoints</a></li>
-            <li><a href="#snippets" class="nav-link">Snippets</a></li>
-            <li><a href="#citations" class="nav-link">Citations</a></li>
+            <li><a href="#explorer" class="nav-link" data-i18n-en="Explorer" data-i18n-cs="Průzkumník">Explorer</a></li>
+            <li><a href="#endpoints" class="nav-link" data-i18n-en="Endpoints" data-i18n-cs="Endpointy">Endpoints</a></li>
+            <li><a href="#snippets" class="nav-link" data-i18n-en="Snippets" data-i18n-cs="Ukázky">Snippets</a></li>
+            <li><a href="#citations" class="nav-link" data-i18n-en="Citations" data-i18n-cs="Citace">Citations</a></li>
             <li><a href="https://github.com/SidloCZ/AntsMappedAPI" class="nav-link" target="_blank" rel="noopener noreferrer">GitHub</a></li>
           </ul>
         </div>
       </div>
 
       <div class="footer-copy">
-        <p>
+        <p data-i18n-html-en="Source code licensed under <strong>MIT License</strong>. Data compiled from GABI (Kass et al. 2022) &amp; Wong et al. (2023) under scientific fair-use attribution." data-i18n-html-cs="Zdrojový kód je licencován pod licencí <strong>MIT</strong>. Vědecká data pocházejí z GABI (Kass et&nbsp;al. 2022) a Wong et&nbsp;al. (2023) pod licencí vědeckého fair-use.">
           Source code licensed under <strong>MIT License</strong>. Data compiled from GABI (Kass et al. 2022) &amp; Wong et al. (2023) under scientific fair-use attribution.
         </p>
       </div>

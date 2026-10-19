@@ -58,6 +58,7 @@ python -m uvicorn option_2b_image_api.api_server:app --reload --port 8000
 ```
 
 The API will be available at `http://localhost:8000`. Test it in your browser:
+
 * PNG map: `http://localhost:8000/map/Lasius_niger.png`
 * Interactive OpenAPI Swagger: `http://localhost:8000/docs`
 
@@ -71,14 +72,16 @@ The API will be available at `http://localhost:8000`. Test it in your browser:
 GET /map/{species_name}.png
 ```
 
-| Parameter | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| `species_name` | path string | *(required)* | Scientific name (e.g. `Lasius_niger`, `Formica_rufa`). |
-| `proj` | query string | `equal_earth` | Projection: `equal_earth`, `plate_carree`, `mercator`. |
-| `theme` | query string | `dark` | Theme: `dark` (Discord default), `light`. |
-| `lang` | query string | `en` | Legend language: `en` (English), `cs` (Czech). |
+
+| Parameter      | Type         | Default       | Description                                           |
+| :------------- | :----------- | :------------ | :---------------------------------------------------- |
+| `species_name` | path string  | *(required)*  | Scientific name (e.g.`Lasius_niger`, `Formica_rufa`). |
+| `proj`         | query string | `equal_earth` | Projection:`equal_earth`, `plate_carree`, `mercator`. |
+| `theme`        | query string | `dark`        | Theme:`dark` (Discord default), `light`.              |
+| `lang`         | query string | `en`          | Legend language:`en` (English), `cs` (Czech).         |
 
 **Example:**
+
 ```text
 https://sidlocz-antsmappedapi.hf.space/map/Lasius_niger.png?proj=equal_earth&theme=dark&lang=en
 ```
@@ -92,6 +95,7 @@ GET /map/genus/{genus_name}.png
 Aggregates all known records for every species within the specified genus.
 
 **Example:**
+
 ```text
 https://sidlocz-antsmappedapi.hf.space/map/genus/Camponotus.png?proj=equal_earth&theme=dark
 ```
@@ -141,7 +145,7 @@ async def antmap(interaction: discord.Interaction, taxon: str):
         color=0x5865F2
     )
     embed.set_image(url=map_url)
-    embed.set_footer(text="Data: GABI (Kass et al. 2022, Wong et al. 2023) | API: AntsMappedAPI")
+    embed.set_footer(text="Data: Kass et al. 2022, Wong et al. 2023 | AntsMappedAPI")
 
     await interaction.response.send_message(embed=embed)
 ```
@@ -169,7 +173,7 @@ module.exports = {
       .setTitle(`Distribution: ${taxon}`)
       .setImage(mapUrl)
       .setColor(0x5865F2)
-      .setFooter({ text: 'Data: GABI (Kass et al. 2022) | API: AntsMappedAPI' });
+      .setFooter({ text: 'Data: Kass et al. 2022 | AntsMappedAPI' });
 
     await interaction.reply({ embeds: [embed] });
   },
@@ -182,14 +186,15 @@ module.exports = {
 
 Maps use high-contrast color coding optimized for dark and light backgrounds:
 
-| Status | Color Code | Description |
-| :--- | :--- | :--- |
-| **Native** | `#8bc34a` (green) | Endemic or indigenous occurrence. |
-| **Established Outdoors** | `#e53935` (red) | Introduced alien species persisting in natural outdoor habitats. |
-| **Established Indoors** | `#ff9800` (warm orange) | Introduced exotic species surviving only in heated greenhouses and buildings. |
-| **Need Verification / Interception** | `#ffee55` (lemon yellow) | Border interception or unverified regional records. |
-| **Dubious / Erroneous** | `#ba68c8` (lavender) | Literature records considered erroneous or dubious by myrmecological authorities. |
-| **Unrecorded Land** | `#36393f` (dark gray) | Biogeographical entities without recorded occurrences. |
+
+| Status                               | Color Code               | Description                                                                       |
+| :----------------------------------- | :----------------------- | :-------------------------------------------------------------------------------- |
+| **Native**                           | `#8bc34a` (green)        | Endemic or indigenous occurrence.                                                 |
+| **Established Outdoors**             | `#e53935` (red)          | Introduced alien species persisting in natural outdoor habitats.                  |
+| **Established Indoors**              | `#ff9800` (warm orange)  | Introduced exotic species surviving only in heated greenhouses and buildings.     |
+| **Need Verification / Interception** | `#ffee55` (lemon yellow) | Border interception or unverified regional records.                               |
+| **Dubious / Erroneous**              | `#ba68c8` (lavender)     | Literature records considered erroneous or dubious by myrmecological authorities. |
+| **Unrecorded Land**                  | `#36393f` (dark gray)    | Biogeographical entities without recorded occurrences.                            |
 
 ---
 
@@ -227,18 +232,17 @@ AntsMappedAPI/
 
 All users, bots, and applications utilizing AntsMapped API are required to give proper credit to the primary scientific researchers who compiled the underlying biodiversity datasets:
 
-1. **Global Ant Distribution (GABI):**  
+1. **Global Ant Distribution (GABI):**
    Kass, J. M., Guénard, B., Dudley, K. L., Jenkins, C. N., Azuma, F., Fisher, B. L., Parr, C. L., Phang, D. E., Schultheiss, P., Shattuck, S. O., Suhr, E. L., & Economo, E. P. (2022). The global distribution of known and undiscovered ant biodiversity. *Science Advances*, 8(31), eabp9908. [https://doi.org/10.1126/sciadv.abp9908](https://doi.org/10.1126/sciadv.abp9908)
-
-2. **Alien Ant Species Dataset:**  
+2. **Alien Ant Species Dataset:**
    Wong, M. K. L., Economo, E. P., & Guénard, B. (2023). The global spread and drivers of alien ant species. *Nature Communications*, 14, 8398. [https://doi.org/10.1038/s41467-023-43861-9](https://doi.org/10.1038/s41467-023-43861-9)
-
-3. **Equal Earth Projection:**  
+3. **Equal Earth Projection:**
    Šavrič, B., Patterson, T., & Jenny, B. (2018). The Equal Earth map projection. *International Journal of Geographical Information Science*, 33(3), 454–465. [https://doi.org/10.1080/13658816.2018.1504949](https://doi.org/10.1080/13658816.2018.1504949)
 
 ### Mandatory Discord Footer Attribution:
+
 ```text
-Data: GABI (Kass et al. 2022, Wong et al. 2023) | API: AntsMappedAPI
+Data: Kass et al. 2022, Wong et al. 2023 | AntsMappedAPI
 ```
 
 ---

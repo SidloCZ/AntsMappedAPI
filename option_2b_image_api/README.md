@@ -65,7 +65,7 @@ async def map(ctx, *, species: str):
         color=0x8bc34a
     )
     embed.set_image(url=map_url)
-    embed.set_footer(text="Data: GABI (Kass et al. 2022, Wong et al. 2023) | AntsMapped API")
+    embed.set_footer(text="Data: Kass et al. 2022, Wong et al. 2023 | AntsMappedAPI")
     
     await ctx.send(embed=embed)
 ```

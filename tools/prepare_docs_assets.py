@@ -84,17 +84,29 @@ def generate_demo_maps():
     print("Generuji vzorové demo mapy pro GitHub Pages...")
     DEMO_MAPS_DIR.mkdir(parents=True, exist_ok=True)
     
-    demos = [
-        ("Lasius niger", "equal_earth", "dark", "en", False),
-        ("Lasius niger", "plate_carree", "dark", "en", False),
-        ("Lasius niger", "mercator", "light", "cs", False),
-        ("Formica rufa", "equal_earth", "dark", "en", False),
-        ("Linepithema humile", "equal_earth", "dark", "en", False),
-        ("Solenopsis invicta", "equal_earth", "dark", "en", False),
-        ("Oecophylla smaragdina", "equal_earth", "dark", "en", False),
-        ("Camponotus ligniperda", "equal_earth", "dark", "cs", False),
-        ("Camponotus", "equal_earth", "dark", "en", True),
+    demos = []
+    
+    # Všech 12 kombinací (3 projekce x 2 motivy x 2 jazyky) pro klíčové ukázkové taxony
+    projections = ["equal_earth", "plate_carree", "mercator"]
+    themes = ["dark", "light"]
+    languages = ["en", "cs"]
+
+    showcase_taxa = [
+        ("Lasius niger", False),
+        ("Lasius", True),
+        ("Formica rufa", False),
+        ("Camponotus ligniperda", False),
+        ("Camponotus", True),
+        ("Linepithema humile", False),
+        ("Solenopsis invicta", False),
+        ("Oecophylla smaragdina", False),
     ]
+
+    for name, is_genus in showcase_taxa:
+        for p in projections:
+            for t in themes:
+                for l in languages:
+                    demos.append((name, p, t, l, is_genus))
     
     for name, proj, theme, lang, is_genus in demos:
         safe_name = name.replace(" ", "_")

@@ -245,7 +245,7 @@ def get_citations():
                 "doi": "10.1080/13658816.2018.1504949",
             },
         ],
-        "suggested_discord_footer": "Data: GABI (Kass et al. 2022, Wong et al. 2023) | API: AntsMappedAPI",
+        "suggested_discord_footer": "Data: Kass et al. 2022, Wong et al. 2023 | AntsMappedAPI",
     }
 
 
