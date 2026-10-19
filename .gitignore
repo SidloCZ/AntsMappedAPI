@@ -1,0 +1,33 @@
+# Raw scientific datasets (> 100 MB - exceeds GitHub upload limits)
+/AntMaps/
+/Work/
+
+# Python cache & virtual environments
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.venv/
+venv/
+ENV/
+env/
+
+# IDE & Editor settings
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+ehthumbs.db
+
+# Secrets & Environment variables
+.env
+.env.*
+!.env.example
+
+# Logs & temp files
+*.log
+scratch/
