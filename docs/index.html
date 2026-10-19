@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AntsMapped API – Global Ant Distribution Maps &amp; Biodiversity API</title>
+  
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="High-performance open-source ant distribution map generator and API for Discord bots, researchers, and web developers. Covers 15,460+ ant taxa and 546 sub-national regions.">
+  <meta name="keywords" content="ants, myrmecology, ant maps, species distribution, GABI, biodiversity API, discord bot maps, Formicidae, Equal Earth projection">
+  <meta name="author" content="AntsMapped API Contributors">
+  
+  <!-- OpenGraph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://sidlocz.github.io/AntsMappedAPI/">
+  <meta property="og:title" content="AntsMapped API – Global Ant Distribution Maps">
+  <meta property="og:description" content="Free community map engine and Flat-File JSON API for 15,460+ ant species and subspecies. Built for Discord bots and researchers.">
+  <meta property="og:image" content="https://sidlocz.github.io/AntsMappedAPI/demo_maps/Lasius_niger_equal_earth_dark_en.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="AntsMapped API – Global Ant Distribution Maps">
+  <meta name="twitter:description" content="Free community map engine and Flat-File JSON API for 15,460+ ant species and subspecies.">
+  <meta name="twitter:image" content="https://sidlocz.github.io/AntsMappedAPI/demo_maps/Lasius_niger_equal_earth_dark_en.png">
+
+  <!-- Favicon (Inline SVG) -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%235865f2'%3E%3Cpath d='M19 13v-2c-1.54.02-3.09-.75-4.07-1.83l-1.29-1.43c-.4-.44-.97-.7-1.57-.7-.34 0-.67.08-.97.24L7.54 9.17C6.67 9.7 5.68 10 4.67 10H3v2h1.67c.68 0 1.34-.2 1.93-.56l1.24-.76-.74 3.32H5v2h2.51l.89-4 1.37.83L9 20h2l1.09-5.46 2.37 1.46H19v-2h-3.66l-2.07-1.27.42-1.91c.88.94 2.14 1.62 3.31 1.68V13zM12 2C10.9 2 10 2.9 10 4s.9 2 2 2 2-.9 2-2-.9-2-2-2z'/%3E%3C/svg%3E">
+
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- Structured Data: WebAPI & Dataset (JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebAPI",
+        "name": "AntsMapped API",
+        "description": "Public community API for ant distribution maps and biogeographical biodiversity data based on GABI, Kass et al. (2022) and Wong et al. (2023).",
+        "documentation": "https://sidlocz.github.io/AntsMappedAPI/",
+        "termsOfService": "https://sidlocz.github.io/AntsMappedAPI/#citations"
+      },
+      {
+        "@type": "Dataset",
+        "name": "AntsMapped Global Ant Distribution Dataset",
+        "description": "Standardized hierarchical ant occurrence data across 546 sub-national biogeographical entities.",
+        "creator": [
+          {
+            "@type": "Person",
+            "name": "Jamie M. Kass"
+          },
+          {
+            "@type": "Person",
+            "name": "Benoit Guénard"
+          },
+          {
+            "@type": "Person",
+            "name": "Evan P. Economo"
+          }
+        ],
+        "citation": "https://doi.org/10.1126/sciadv.abp9908"
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <!-- Site Navigation Header -->
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a href="#" class="brand">
+        <svg class="icon icon-lg" viewBox="0 0 24 24" style="color: var(--accent-primary);">
+          <path d="M19 13v-2c-1.54.02-3.09-.75-4.07-1.83l-1.29-1.43c-.4-.44-.97-.7-1.57-.7-.34 0-.67.08-.97.24L7.54 9.17C6.67 9.7 5.68 10 4.67 10H3v2h1.67c.68 0 1.34-.2 1.93-.56l1.24-.76-.74 3.32H5v2h2.51l.89-4 1.37.83L9 20h2l1.09-5.46 2.37 1.46H19v-2h-3.66l-2.07-1.27.42-1.91c.88.94 2.14 1.62 3.31 1.68V13zM12 2C10.9 2 10 2.9 10 4s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>
+        </svg>
+        <span>AntsMapped API</span>
+        <span class="brand-badge">v1.1</span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="#explorer" class="nav-link active" data-i18n-en="Explorer" data-i18n-cs="Průzkumník">Explorer</a></li>
+        <li><a href="#endpoints" class="nav-link" data-i18n-en="API Reference" data-i18n-cs="Dokumentace API">API Reference</a></li>
+        <li><a href="#snippets" class="nav-link" data-i18n-en="Code Snippets" data-i18n-cs="Ukázky kódu">Code Snippets</a></li>
+        <li><a href="#citations" class="nav-link" data-i18n-en="Citations &amp; License" data-i18n-cs="Citace a licence">Citations &amp; License</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <!-- Language Switcher -->
+        <button id="lang-toggle-btn" class="btn-icon" aria-label="Toggle language" title="Přepnout jazyk / Toggle language">
+          <span id="lang-btn-text" style="font-size: 0.75rem; font-weight: 700;">EN</span>
+        </button>
+
+        <!-- Theme Switcher -->
+        <button id="theme-toggle-btn" class="btn-icon" aria-label="Toggle dark/light theme" title="Přepnout motiv">
+          <svg class="icon icon-sm" viewBox="0 0 24 24">
+            <path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"/>
+          </svg>
+        </button>
+
+        <!-- GitHub Link -->
+        <a href="https://github.com/SidloCZ/AntsMappedAPI" target="_blank" rel="noopener noreferrer" class="btn-gh">
+          <svg class="icon icon-sm" viewBox="0 0 24 24">
+            <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+          </svg>
+          <span>GitHub</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-glow"></div>
+    <div class="container">
+      <h1 class="hero-title">
+        The Open-Source Ant Distribution Map Engine &amp; <br>
+        <span>Flat-File JSON API</span>
+      </h1>
+      <p class="hero-subtitle" data-i18n-en="High-performance biogeographical mapping for Discord bots, researchers, and web developers. Instant PNG rendering across 15,460+ ant taxa and 546 sub-national regions." data-i18n-cs="Vysoce výkonný mapový generátor a otevřené biogeografické API pro Discord boty, výzkumníky a webové vývojáře. Okamžité renderování pro 15 460+ taxonů mravenců v 546 regionech.">
+        High-performance biogeographical mapping for Discord bots, researchers, and web developers. Instant PNG rendering across 15,460+ ant taxa and 546 sub-national regions.
+      </p>
+
+      <div class="stats-grid">
+        <div class="stat-chip">
+          <svg class="icon icon-sm" viewBox="0 0 24 24" style="color: var(--accent-primary);"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <span><strong>15,462</strong> <span data-i18n-en="Species &amp; Subspecies" data-i18n-cs="Druhů a poddruhů">Species &amp; Subspecies</span></span>
+        </div>
+        <div class="stat-chip">
+          <svg class="icon icon-sm" viewBox="0 0 24 24" style="color: var(--accent-primary);"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+          <span><strong>546</strong> <span data-i18n-en="GABI Bentities" data-i18n-cs="GABI regionů">GABI Bentities</span></span>
+        </div>
+        <div class="stat-chip">
+          <svg class="icon icon-sm" viewBox="0 0 24 24" style="color: var(--status-native);"><path d="M13 3c-4.97 0-9 4.03-9 9H1l3.89 3.89.07.14L9 12H6c0-3.87 3.13-7 7-7s7 3.13 7 7-3.13 7-7 7c-1.93 0-3.68-.79-4.94-2.06l-1.42 1.42C8.27 19.99 10.51 21 13 21c4.97 0 9-4.03 9-9s-4.03-9-9-9zm-1 5v5l4.28 2.54.72-1.21-3.5-2.08V8H12z"/></svg>
+          <span><strong>&lt; 5 ms</strong> <span data-i18n-en="Cache Response" data-i18n-cs="Odezva cache">Cache Response</span></span>
+        </div>
+        <div class="stat-chip">
+          <svg class="icon icon-sm" viewBox="0 0 24 24" style="color: var(--status-indoor);"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/></svg>
+          <span><strong>100% Free</strong> &amp; Open Source</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 1: Interactive Map Explorer -->
+  <section id="explorer" class="section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">
+          <svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+          <span data-i18n-en="Interactive Explorer" data-i18n-cs="Interaktivní průzkumník">Interactive Explorer</span>
+        </div>
+        <h2 class="section-title" data-i18n-en="Live Ant Distribution Map Viewer" data-i18n-cs="Živý prohlížeč map rozšíření mravenců">Live Ant Distribution Map Viewer</h2>
+        <p class="section-desc" data-i18n-en="Search among 15,460+ ant taxa or 338 genera. Customize the map projection, color theme, and legend language in real-time." data-i18n-cs="Vyhledávejte mezi 15 460+ taxony mravenců nebo 338 rody. Přizpůsobte projekci, motiv i jazyk legendy v reálném čase.">
+          Search among 15,460+ ant taxa or 338 genera. Customize the map projection, color theme, and legend language in real-time.
+        </p>
+      </div>
+
+      <div class="explorer-card">
+        <!-- Controls Bar -->
+        <div class="explorer-controls">
+          <!-- Autocomplete Search Input -->
+          <div class="search-box-wrap">
+            <div class="search-input-group">
+              <svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+              <input type="text" id="taxon-search-input" class="search-input" placeholder="Type taxon name (e.g. Lasius niger, Formica, Solenopsis invicta)..." autocomplete="off" value="Lasius niger">
+            </div>
+            <!-- Live Autocomplete Dropdown List -->
+            <div id="autocomplete-results" class="autocomplete-results"></div>
+          </div>
+
+          <!-- Parameter Selectors -->
+          <div class="param-selectors">
+            <!-- Projection -->
+            <div class="param-group">
+              <span class="param-label" data-i18n-en="Projection" data-i18n-cs="Projekce">Projection</span>
+              <div class="segmented-control" data-param="proj">
+                <button class="segment-btn active" data-value="equal_earth">Equal Earth</button>
+                <button class="segment-btn" data-value="plate_carree">Plate Carrée</button>
+                <button class="segment-btn" data-value="mercator">Mercator</button>
+              </div>
+            </div>
+
+            <!-- Theme -->
+            <div class="param-group">
+              <span class="param-label" data-i18n-en="Theme" data-i18n-cs="Barevný motiv">Theme</span>
+              <div class="segmented-control" data-param="theme">
+                <button class="segment-btn active" data-value="dark">Dark (Discord)</button>
+                <button class="segment-btn" data-value="light">Light</button>
+              </div>
+            </div>
+
+            <!-- Legend Language -->
+            <div class="param-group">
+              <span class="param-label" data-i18n-en="Legend Language" data-i18n-cs="Jazyk legendy">Legend Language</span>
+              <div class="segmented-control" data-param="lang">
+                <button class="segment-btn active" data-value="en">English</button>
+                <button class="segment-btn" data-value="cs">Čeština</button>
+              </div>
+            </div>
+
+            <!-- Target API Server -->
+            <div class="server-target-group">
+              <label for="server-target-select" class="param-label" data-i18n-en="API Source:" data-i18n-cs="Zdroj API:">API Source:</label>
+              <select id="server-target-select" class="server-select">
+                <option value="demo">GitHub Pages Pre-rendered</option>
+                <option value="hf">Hugging Face Cloud API</option>
+                <option value="local">Localhost (port 8000)</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Explorer Stage: Map Viewport & Sidebar -->
+        <div class="explorer-stage">
+          <div class="map-viewport">
+            <div id="map-loader" class="map-loader">
+              <div class="spinner"></div>
+              <span data-i18n-en="Rendering ant distribution map..." data-i18n-cs="Vykresluji mapu výskytu mravenců...">Rendering ant distribution map...</span>
+            </div>
+            <img id="map-preview-img" class="map-img" src="demo_maps/Lasius_niger_equal_earth_dark_en.png" alt="Distribution map preview">
+          </div>
+
+          <!-- Details Sidebar -->
+          <div class="explorer-sidebar">
+            <div class="info-header">
+              <h3 id="selected-taxon-name" class="info-title tax-name">Lasius niger</h3>
+              <div class="info-meta-chips">
+                <span id="selected-taxon-rank" class="badge badge-species">species</span>
+                <span id="selected-taxon-regions" class="regions-count">81 GABI biogeographic regions</span>
+              </div>
+            </div>
+
+            <div class="endpoint-url-box">
+              <span class="param-label" data-i18n-en="Live PNG URL" data-i18n-cs="Přímá URL adresa PNG">Live PNG URL</span>
+              <code id="live-url-code" class="endpoint-url-code">https://sidlocz-antsmappedapi.hf.space/map/Lasius_niger.png?proj=equal_earth&amp;theme=dark&amp;lang=en</code>
+              <button id="copy-live-url-btn" class="btn-copy">
+                <svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+                <span data-i18n-en="Copy URL" data-i18n-cs="Zkopírovat URL">Copy URL</span>
+              </button>
+            </div>
+
+            <div class="action-buttons-group">
+              <a id="btn-download-png" href="demo_maps/Lasius_niger_equal_earth_dark_en.png" download="Lasius_niger_map.png" class="btn-action btn-action-primary">
+                <svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+                <span data-i18n-en="Download PNG Map" data-i18n-cs="Stáhnout PNG mapu">Download PNG Map</span>
+              </a>
+              <a id="btn-view-json" href="#" target="_blank" class="btn-action btn-action-secondary">
+                <svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg>
+                <span data-i18n-en="View Distribution JSON" data-i18n-cs="Zobrazit distribuční JSON">View Distribution JSON</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 2: Complete Interactive API Reference -->
+  <section id="endpoints" class="section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">
+          <svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H8V4h12v12z"/></svg>
+          <span data-i18n-en="API Reference" data-i18n-cs="Dokumentace API">API Reference</span>
+        </div>
+        <h2 class="section-title" data-i18n-en="RESTful API Endpoints" data-i18n-cs="Endpointy RESTful API">RESTful API Endpoints</h2>
+        <p class="section-desc" data-i18n-en="All endpoints return standard HTTP responses with CORS enabled, browser and CDN cache headers, and high-performance in-memory rendering." data-i18n-cs="Všechny endpointy vracejí standardní HTTP odpovědi s povoleným CORS, mezipamětí pro CDN a bleskovým in-memory renderováním.">
+          All endpoints return standard HTTP responses with CORS enabled, browser and CDN cache headers, and high-performance in-memory rendering.
+        </p>
+      </div>
+
+      <div class="endpoints-grid">
+        <!-- Endpoint 1: Species Map -->
+        <div class="endpoint-card">
+          <div class="endpoint-header">
+            <span class="http-method method-get">GET</span>
+            <span class="endpoint-path">/map/{species_name}.png</span>
+          </div>
+          <p class="endpoint-desc" data-i18n-en="Dynamically renders and returns a high-resolution PNG distribution map for any ant species or subspecies." data-i18n-cs="Dynamicky vykreslí a vrátí PNG mapu rozšíření ve vysokém rozlišení pro libovolný druh nebo poddruh mravence.">
+            Dynamically renders and returns a high-resolution PNG distribution map for any ant species or subspecies.
+          </p>
+
+          <div class="table-wrap">
+            <table class="param-table">
+              <thead>
+                <tr>
+                  <th>Parameter</th>
+                  <th>Type</th>
+                  <th>Default</th>
+                  <th>Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>species_name</strong></td>
+                  <td>path string</td>
+                  <td><em>required</em></td>
+                  <td>Scientific binomial or trinomial name (e.g. <code>Lasius_niger</code>, <code>Formica_picea_formosae</code>).</td>
+                </tr>
+                <tr>
+                  <td><strong>proj</strong></td>
+                  <td>query string</td>
+                  <td><code>equal_earth</code></td>
+                  <td>Cartographic projection: <code>equal_earth</code>, <code>plate_carree</code>, <code>mercator</code>.</td>
+                </tr>
+                <tr>
+                  <td><strong>theme</strong></td>
+                  <td>query string</td>
+                  <td><code>dark</code></td>
+                  <td>Color theme: <code>dark</code> (optimized for Discord) or <code>light</code> (publication white).</td>
+                </tr>
+                <tr>
+                  <td><strong>lang</strong></td>
+                  <td>query string</td>
+                  <td><code>en</code></td>
+                  <td>Legend language: <code>en</code> (English) or <code>cs</code> (Čeština).</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Endpoint 2: Genus Map -->
+        <div class="endpoint-card">
+          <div class="endpoint-header">
+            <span class="http-method method-get">GET</span>
+            <span class="endpoint-path">/map/genus/{genus_name}.png</span>
+          </div>
+          <p class="endpoint-desc" data-i18n-en="Returns an aggregated global distribution map of all species and records within the specified genus." data-i18n-cs="Vrací agregovanou celosvětovou mapu rozšíření všech druhů a záznamů v daném rodu.">
+            Returns an aggregated global distribution map of all species and records within the specified genus.
+          </p>
+        </div>
+
+        <!-- Endpoint 3: Distribution JSON -->
+        <div class="endpoint-card">
+          <div class="endpoint-header">
+            <span class="http-method method-get">GET</span>
+            <span class="endpoint-path">/api/v1/distribution/{species_name}</span>
+          </div>
+          <p class="endpoint-desc" data-i18n-en="Returns structured JSON with all sub-national biogeographic regions (GABI bentities) and establishment status." data-i18n-cs="Vrací strukturovaný JSON se všemi biogeografickými celky (GABI bentities) a jejich statusem původnosti.">
+            Returns structured JSON with all sub-national biogeographic regions (GABI bentities) and establishment status.
+          </p>
+        </div>
+
+        <!-- Endpoint 4: Search -->
+        <div class="endpoint-card">
+          <div class="endpoint-header">
+            <span class="http-method method-get">GET</span>
+            <span class="endpoint-path">/api/v1/search?q={query}&amp;limit=20</span>
+          </div>
+          <p class="endpoint-desc" data-i18n-en="Fulltext autocomplete search across all 15,460+ ant species and subspecies." data-i18n-cs="Fulltextové vyhledávání a našeptávač přes všech 15 460+ druhů a poddruhů mravenců.">
+            Fulltext autocomplete search across all 15,460+ ant species and subspecies.
+          </p>
+        </div>
+
+        <!-- Endpoint 5: Citations -->
+        <div class="endpoint-card">
+          <div class="endpoint-header">
+            <span class="http-method method-get">GET</span>
+            <span class="endpoint-path">/api/v1/citations</span>
+          </div>
+          <p class="endpoint-desc" data-i18n-en="Returns required scientific citations and licensing metadata for Kass et al. (2022) and Wong et al. (2023)." data-i18n-cs="Vrací povinné vědecké citace a licenční metadata pro studie Kass et al. (2022) a Wong et al. (2023).">
+            Returns required scientific citations and licensing metadata for Kass et al. (2022) and Wong et al. (2023).
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 3: Copy-Paste Code Examples -->
+  <section id="snippets" class="section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">
+          <svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"/></svg>
+          <span data-i18n-en="Integration Guides" data-i18n-cs="Integrační příručka">Integration Guides</span>
+        </div>
+        <h2 class="section-title" data-i18n-en="Ready-to-Use Code Snippets" data-i18n-cs="Připravené ukázky kódu">Ready-to-Use Code Snippets</h2>
+        <p class="section-desc" data-i18n-en="Select your framework or language. Snippets automatically reflect the taxon and parameters currently chosen in the explorer." data-i18n-cs="Vyberte svůj jazyk nebo knihovnu. Ukázky se automaticky přizpůsobují taxonu a parametrům vybraným v průzkumníku.">
+          Select your framework or language. Snippets automatically reflect the taxon and parameters currently chosen in the explorer.
+        </p>
+      </div>
+
+      <div class="code-box">
+        <div class="code-tabs">
+          <button class="code-tab active" data-tab="discord-py">Python (discord.py)</button>
+          <button class="code-tab" data-tab="disnake">Python (disnake)</button>
+          <button class="code-tab" data-tab="requests">Python (requests)</button>
+          <button class="code-tab" data-tab="discord-js">JavaScript (discord.js v14)</button>
+          <button class="code-tab" data-tab="fetch">JavaScript (fetch)</button>
+          <button class="code-tab" data-tab="curl">Shell (cURL)</button>
+        </div>
+
+        <div class="code-pre-wrap">
+          <button id="copy-code-btn" class="btn-copy code-copy-btn">
+            <svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+            <span data-i18n-en="Copy Code" data-i18n-cs="Kopírovat kód">Copy Code</span>
+          </button>
+          <pre><code id="code-display"># Code will load here automatically</code></pre>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 4: Strict Citations & Licensing -->
+  <section id="citations" class="section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">
+          <svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M18 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 4h5v8l-2.5-1.5L6 12V4z"/></svg>
+          <span data-i18n-en="Scientific Attribution" data-i18n-cs="Vědecké citace a licence">Scientific Attribution</span>
+        </div>
+        <h2 class="section-title" data-i18n-en="Citations &amp; Mandatory Attribution" data-i18n-cs="Citace a povinnost uvádění zdrojů">Citations &amp; Mandatory Attribution</h2>
+        <p class="section-desc" data-i18n-en="This service compiles data from peer-reviewed scientific literature. Any bot, publication, or app utilizing this API must cite the following primary authors:" data-i18n-cs="Tato služba staví na datech z recenzovaných vědeckých studií. Jakýkoliv bot, web či publikace využívající toto API musí citovat původní autory:">
+          This service compiles data from peer-reviewed scientific literature. Any bot, publication, or app utilizing this API must cite the following primary authors:
+        </p>
+      </div>
+
+      <div class="citations-grid">
+        <!-- Citation 1: Kass 2022 -->
+        <div class="citation-card">
+          <span class="citation-source">GABI Database (Kass et al. 2022)</span>
+          <p class="citation-text">
+            Kass, J. M., Guénard, B., Dudley, K. L., Jenkins, C. N., Azuma, F., Fisher, B. L., Parr, C. L., Phang, D. E., Schultheiss, P., Shattuck, S. O., Suhr, E. L., &amp; Economo, E. P. (2022). The global distribution of known and undiscovered ant biodiversity. <em>Science Advances</em>, 8(31), eabp9908.
+          </p>
+          <div class="citation-actions">
+            <button class="btn-copy btn-copy-citation" data-cite-type="apa-kass">
+              <svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+              <span>Copy APA</span>
+            </button>
+            <button class="btn-copy btn-copy-citation" data-cite-type="bibtex-kass">
+              <svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+              <span>Copy BibTeX</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Citation 2: Wong 2023 -->
+        <div class="citation-card">
+          <span class="citation-source">Alien Ant Species (Wong et al. 2023)</span>
+          <p class="citation-text">
+            Wong, M. K. L., Economo, E. P., &amp; Guénard, B. (2023). The global spread and drivers of alien ant species. <em>Nature Communications</em>, 14, 8398.
+          </p>
+          <div class="citation-actions">
+            <button class="btn-copy btn-copy-citation" data-cite-type="apa-wong">
+              <svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+              <span>Copy APA</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Citation 3: Savric 2018 -->
+        <div class="citation-card">
+          <span class="citation-source">Equal Earth Projection (Šavrič et al. 2018)</span>
+          <p class="citation-text">
+            Šavrič, B., Patterson, T., &amp; Jenny, B. (2018). The Equal Earth map projection. <em>International Journal of Geographical Information Science</em>, 33(3), 454–465.
+          </p>
+          <div class="citation-actions">
+            <button class="btn-copy btn-copy-citation" data-cite-type="apa-savric">
+              <svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+              <span>Copy APA</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mandatory Discord Embed Footer Banner -->
+      <div class="license-banner">
+        <svg class="icon icon-lg" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+        <div class="license-content">
+          <h4 data-i18n-en="Mandatory Discord Embed Footer" data-i18n-cs="Povinný text do zápatí Discord embedů">Mandatory Discord Embed Footer</h4>
+          <p data-i18n-en="When sending maps to Discord via bot embeds, you must include the following attribution in the embed footer:" data-i18n-cs="Při odesílání map do Discordu v embedu bota musíte v zápatí (footeru) uvést tuto citaci:">
+            When sending maps to Discord via bot embeds, you must include the following attribution in the embed footer:
+          </p>
+          <div style="margin-top: 0.75rem; display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap;">
+            <code style="background: var(--bg-card); padding: 0.35rem 0.65rem; border-radius: 0.35rem; font-family: var(--font-mono); font-size: 0.85rem; border: 1px solid var(--border-color);">Data: GABI (Kass et al. 2022, Wong et al. 2023) | API: AntsMappedAPI</code>
+            <button class="btn-copy btn-copy-citation" data-cite-type="discord-footer">
+              <svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+              <span data-i18n-en="Copy Footer Text" data-i18n-cs="Kopírovat text patičky">Copy Footer Text</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="brand" style="margin-bottom: 0.5rem;">
+            <svg class="icon icon-lg" viewBox="0 0 24 24" style="color: var(--accent-primary);">
+              <path d="M19 13v-2c-1.54.02-3.09-.75-4.07-1.83l-1.29-1.43c-.4-.44-.97-.7-1.57-.7-.34 0-.67.08-.97.24L7.54 9.17C6.67 9.7 5.68 10 4.67 10H3v2h1.67c.68 0 1.34-.2 1.93-.56l1.24-.76-.74 3.32H5v2h2.51l.89-4 1.37.83L9 20h2l1.09-5.46 2.37 1.46H19v-2h-3.66l-2.07-1.27.42-1.91c.88.94 2.14 1.62 3.31 1.68V13zM12 2C10.9 2 10 2.9 10 4s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>
+            </svg>
+            <span>AntsMapped API</span>
+          </div>
+          <p style="color: var(--text-muted); font-size: 0.85rem;">
+            Free, community-driven ant distribution mapping engine &amp; public Flat-File API.
+          </p>
+        </div>
+
+        <div>
+          <ul class="nav-links">
+            <li><a href="#explorer" class="nav-link">Explorer</a></li>
+            <li><a href="#endpoints" class="nav-link">Endpoints</a></li>
+            <li><a href="#snippets" class="nav-link">Snippets</a></li>
+            <li><a href="#citations" class="nav-link">Citations</a></li>
+            <li><a href="https://github.com/SidloCZ/AntsMappedAPI" class="nav-link" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-copy">
+        <p>
+          Source code licensed under <strong>MIT License</strong>. Data compiled from GABI (Kass et al. 2022) &amp; Wong et al. (2023) under scientific fair-use attribution.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast Notification Container -->
+  <div id="toast-container" class="toast-container"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
