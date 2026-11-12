@@ -49,6 +49,8 @@ Tento soubor slouží jako centrální a závazná sada instrukcí pro AI asiste
     1. Kass et&nbsp;al. (2022) *Science Advances* (GABI)
     2. Wong et&nbsp;al. (2023) (Alien ant species)
     3. Šavrič et&nbsp;al. (2018) (Equal Earth projection)
+- **Přístup k souborům:**
+  - Před pokusem o přístup mimo složku tohoto workspace se vždy zeptej. Je nutné zamezit nepovoleným přístupům na jiné disky, k souborům mimo tento workspace.
 
 ---
 
@@ -61,13 +63,10 @@ Tento soubor slouží jako centrální a závazná sada instrukcí pro AI asiste
   - Vyvaruj se překombinovaných návrhů a zbytečného kódu navíc.
 - **Audit a transparentnost nepožádaných změn kódu:**
   - Pokud v kódu provedeš jakoukoliv změnu, refaktoring nebo optimalizaci, **o kterou uživatel v zadání výslovně nežádal**, VŽDY tuto změnu v odpovědi zřetelně zdůrazni a vysvětli její důvod.
-  - Nápady a návrhy nad rámec původního zadání neimplementuj svévolně – popiš je v chatu jako dotaz či doporučení.
-- **Striktní zákaz emoji:**
-  - V celém projektu (uživatelské rozhraní, dialogy, toast zprávy, kód, komentáře, commit zprávy, texty i odpovědi asistenta) je **přísně zakázáno používat emoji**.
-  - Místo emotikonů používej výhradně **pěkné, minimalistické, jednobarevné inline SVG**.
-  - Zákaz Unicode vlaječek států (na Windows se vykreslují jako textová písmena) – vždy nahradit inline SVG vlajkou.
-- **Faktická přesnost bez domýšlení:**
-  - Nikdy si nevymýšlej neověřené parametry, čísla nebo fakta. Pokud chybí přesný zdroj či data, zeptej se uživatele nebo nastav prvek do stavu konceptu.
+  - Nápady a návrhy nad rámec původního zadání neimplementuj svévolně do kódu – popiš je v chatu jako dotaz či doporučení.
+- **Aktivní dotazování při plánování a změnách (`ask_question`):**
+  - Při plánování dalšího postupu nebo pokud má být provedena jakákoliv změna, která nebyla agentovi specificky a výslovně zadána, se agent **frekventovaně ptá uživatele pomocí nástroje `ask_question`**.
+  - Nevytvářej domněnky a před zahájením implementace si vždy ujasni varianty a priority.
 - **Automatické ukládání postřehů a návrhů (SUGGESTIONS.md):**
   - **Zásada nezdržování:** Asistent aktivně a cíleně nevyhledává vedlejší problémy a neodvádí pozornost od zadaného úkolu. Zaznamenává výhradně postřehy, na které přirozeně narazí během řešení (např. technický dluh, skrytý bug, neoptimální kód, bezpečnostní riziko, chybějící typování), a které by jinak pouze napsal do chatu, kde hrozí jejich zapadnutí.
   - **Umístění a inicializace:** Návrhy ukládej do souboru `SUGGESTIONS.md` v kořenovém adresáři projektu. Pokud soubor ještě neexistuje, asistent jej vytvoří s logickým rozdělením do kategorií.
@@ -86,14 +85,27 @@ Tento soubor slouží jako centrální a závazná sada instrukcí pro AI asiste
     - `## Výkon a optimalizace`
     - `## Dokumentace a procesy`
   - **Chování v chatu:** Nezahlcuj chat rozsáhlými rozbory vedlejších nápadů. Do odpovědi vlož pouze stručnou jednovětou notifikaci s odkazem na soubor, např. *„Při úpravách jsem zaznamenal prostor pro refaktoring – detailní návrh jsem zapsal do [SUGGESTIONS.md](SUGGESTIONS.md).*“
+- **Striktní zákaz emoji:**
+  - V celém projektu (uživatelské rozhraní, dialogy, toast zprávy, kód, komentáře, commit zprávy, texty i odpovědi asistenta) je **přísně zakázáno používat emoji**.
+  - Místo emotikonů používej výhradně **pěkné, minimalistické, jednobarevné inline SVG**.
+  - Zákaz Unicode vlaječek států (na Windows se vykreslují jako textová písmena) – vždy nahradit inline SVG vlajkou.
+- **Faktická přesnost bez domýšlení:**
+  - Nikdy si nevymýšlej neověřené parametry, čísla nebo fakta. Pokud chybí přesný zdroj či data, zeptej se uživatele nebo nastav prvek do stavu konceptu.
 
 ---
 
 ## 2. Nástroje IDE, Git a verzování
 
-- **Nativní IDE nástroje:**
-  - K vyhledávání, čtení a inspekci souborů používej nativní workspace nástroje (file search, read_file, grep).
+- **Tool Usage Preferences:**
+  - Always prefer native/built-in IDE file tools (`read_file`, `edit_file`, `write_file`, `view_file_outline`, `search_files`) over terminal commands.
+  - K čtení, úpravám a vytváření souborů používej nativní nástroje `read_file`, `edit_file` a `write_file`.
+  - Pro vyhledávání na internetu a dohledávání dokumentace používej `search_web`.
+  - Do not run shell commands (`cat`, `Get-Content`, `type`, `head`, `tail`, `grep`) solely to read or inspect file contents or search directory structures.
+  - Reserve terminal commands strictly for building, running test suites, git operations, or executing environment-specific scripts.
+  - When reading large files, inspect targeted line slices rather than fetching entire documents.
   - Nepoužívej terminálové zkratky typu `node -e` ani ad-hoc bash skripty pro inspekci souborů.
+- **Grounding v biologických a myrmekologických tématech:**
+  - For grounding in ant related topics, always use **antscout MCP** tools.
 - **Commit message (Conventional Commits):**
   - Na konci každé zprávy v chatu připrav výstižný návrh commit zprávy v angličtině podle konvence (`feat(...)`, `fix(...)`, `chore(...)`, `docs(...)`, `refactor(...)`, `style(...)`).
   - Vypiš **pouze čistý text zprávy** bez balení do `git commit -m` a bez uvozovek.
@@ -112,9 +124,11 @@ Tento soubor slouží jako centrální a závazná sada instrukcí pro AI asiste
 
 - **Jednoduchost UI prvků:**
   - Tlačítka, položky navigace a nadpisy formuluj stručně a výstižně (ideálně 1–2 slova).
-  - Do UI nepřidávej svévolné dekorativní štítky a odznaky, pokud nebyly vyžádány.
+  - Do UI nepřidávej svévolné dekorativní štítky a odznaky (badges jako „Novinka“, „Báze znalostí“), pokud nebyly vyžádány.
 - **Parita světlého a tmavého režimu (Dark / Light mode):**
   - Při jakékoliv úpravě barev nebo motivů zajisti adekvátní kontrast a funkčnost v obou režimech současně.
+- **Staging a produkční synchronizace:**
+  - Pokud projekt využívá trvalé testovací či staging stránky (`temp-*`), udržuj jejich kód v synchronizovaném stavu s odpovídajícími ostrými verzemi.
 - **Responzivita a přístupnost:**
   - Webová dokumentace musí být plně responzivní (mobil, tablet, desktop) a čitelná pro vyhledávací roboty (SEO optimalizovaná s kompletními meta tagy a OpenGraph).
 
@@ -122,7 +136,7 @@ Tento soubor slouží jako centrální a závazná sada instrukcí pro AI asiste
 
 ## 4. Jazyková pravidla a česká mikrotypografie
 
-- **Výchozí jazyk:** Řiď se jazykem promptu (typicky čeština; API endpointy a kód jsou v angličtině).
+- **Výchozí jazyk:** Řiď se jazykem promptu (typicky čeština; API endpointy a kód jsou v angličtině; u webových projektů s `/en/` verzí udržuj překladovou paritu).
 - **Zásady české mikrotypografie:**
   - **Pevné mezery (`&nbsp;` / `\u00A0`):** Neslabičné a jednopísmenné předložky a spojky (*k, s, v, z, o, u, a, i*) nesmí zůstávat na konci řádku. Vždy je navaž pevnou mezerou k následujícímu slovu.
   - **České uvozovky:** V českých textech používej výhradně uvozovky 99–66: dole `„` (U+201E) a nahoře `“` (U+201C). Zákaz rovných `""` i anglických `“...”`.
@@ -131,10 +145,13 @@ Tento soubor slouží jako centrální a závazná sada instrukcí pro AI asiste
     - Spojovník (`-`, hyphen): Pouze pro těsně vázaná složená slova (*česko-slovenský*) nebo dělení slov.
   - **Jednotky a procenta:** Mezi číslem a jednotkou je vždy pevná mezera (`12&nbsp;mm`, `24&nbsp;°C`). U procent: `10 %` = deset procent (podstatné jméno), `10%` = desetiprocentní (přídavné jméno).
   - **Desetinná čísla a řády:** V českém textu piš desetinnou čárku (*1,5 mm*), v anglickém tečku (*1.5 mm*). Tisíce a vyšší řády odděluj mezerou (*10 000*).
+- **Japonský jazyk (pokud je v projektu použit):**
+  - Přepis do latinky uváděj vždy **českým přepisem** (vhodně doplněný o Hepburn). U kandži vždy doplň přepis do kany.
 
 ---
 
 # ČÁST III: SPECIALIZOVANÝ MODUL – BIOLOGIE A MYRMEKOLOGIE
+<!-- Tento modul je aktivní při tvorbě biologického, taxonomického a chovatelského obsahu -->
 
 ## 1. Binomická a trinomiální nomenklatura (Vědecké názvosloví)
 - **Rod (Genus):** První písmeno velké, formátováno kurzívou (*Camponotus*, *Odontomachus*, *Lasius*, *Formica*).
@@ -144,11 +161,19 @@ Tento soubor slouží jako centrální a závazná sada instrukcí pro AI asiste
 - **Vyšší taxony (Tribus, Podčeleď, Čeleď):** Velké počáteční písmeno, **normální písmo bez kurzívy** (Camponotini, Formicinae, Formicidae).
 - **Zákaz CSS capitalize:** Nikdy nepoužívat CSS vlastnost `capitalize` ani automatické kapitálky na druhy (nepřípustné: *Camponotus Ligniperda* nebo *Formica Picea Formosae*).
 
-## 2. Odborná terminologie a biogeografie
+## 2. Odborná terminologie, biogeografie a překlady
 - **Biogeografické statusy:**
   - *Native* (Původní)
   - *Introduced / Established outdoors* (Zavlečený – volná příroda)
   - *Introduced / Established indoors* (Zavlečený – budovy a skleníky)
   - *Need verification / Border interception* (Vyžaduje ověření / záchyt)
   - *Dubious / Erroneous* (Chybné či pochybné literární záznamy)
-- **Zákaz překládání molekulárních a genetických termínů:** Termíny jako *COI*, *DNA barcoding*, *Barcoding*, *Barcodes*, *PCR*, *mtDNA* apod. se **NIKDY NEPŘEKLÁDAJÍ** do češtiny.
+- **Zákaz překládání molekulárních a genetických termínů:** Termíny jako *COI*, *DNA barcoding*, *Barcoding*, *Barcodes*, *PCR*, *mtDNA* apod. se **NIKDY NEPŘEKLÁDAJÍ** do češtiny (např. nepoužívat výrazy „čárové kódy DNA“). Ponechat standardní vědecké označení.
+- **Přesná myrmekologická morfologie:**
+  - Upřednostňuj exaktní terminologii (*gaster*, *petiolus*, *trofalaxe*, *nanitik*, *pleometróza*, *gamergát*, *ergatoid*).
+  - Nepřidávat české názvy do závorek za odborné termíny, které se běžně nepřekládají.
+  - **Diapauza:** Mravenci mají diapauzu; nepoužívat paušálně termíny „hibernace“ či „zimování“, pokud to není přesně fyziologicky podloženo.
+  - **Subkasty a kasty:** Major je subkasta dělnice, voják (soldier) je samostatná kasta s unikátními morfologickými znaky (fragmotická hlava, šavlovitá kusadla). Množné číslo: majoři, minoři, medie (nikoliv „majory“, „minora“).
+
+## 3. Grounding a fakta o mravencích (antscout MCP)
+- **Ověřování dat:** Pro grounding in ant related topics vždy používej **antscout MCP** (nástroje jako `search_species`, `species_profile`, `genus_overview`, `get_antwiki`, `search_facts`, `search_papers`, `search_specimen_images`, `search_distribution`).
