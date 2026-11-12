@@ -163,6 +163,13 @@ body {
   letter-spacing: -0.02em;
 }
 
+.brand-logo {
+  width: 2rem;
+  height: 2rem;
+  display: block;
+  flex-shrink: 0;
+}
+
 .brand-badge {
   font-size: 0.7rem;
   padding: 0.15rem 0.5rem;

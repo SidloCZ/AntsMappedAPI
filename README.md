@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="docs/logo.svg" alt="AntsMapped API Logo" width="128" height="128">
+</p>
+
 # AntsMapped API
 
 > Free, community-driven ant distribution map generator and Flat-File JSON API for Discord bots, myrmecologists, and web developers.
