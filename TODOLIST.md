@@ -1,0 +1,6 @@
+1. **Exporter statického API je rozbitý.** V `option_2a_github_pages/export_static_api.py` vede `BASE_DIR = Path(__file__).resolve().parent.parent.parent.parent` až do `E:\` a `DIST_DIR` míří do neexistujícího `tools/antmaps_tools/...`. Skript by tedy zapisoval mimo repozitář. Navíc je v Gitu jen 5 souborů v `dist_api` (2 druhy), takže varianta 2A je zatím spíš stub.
+2. **Chybí `LICENSE`, `requirements.txt` i testy.** README odkazuje na MIT licenci a badge, ale soubor v repozitáři není; závislosti se instalují ručním `pip install`. Pro „open-source“ projekt je to formální dluh.
+3. **Paměťová stopa LRU cache.** 1 024 PNG o velikosti \~250–330 kB znamená teoreticky až \~300 MB RAM, bez TTL. Na free tier HF Spaces to může být riziko.
+4. **Tvrzení „< 5 ms“** v README je nezměřené – v této session jsem server nespouštěl, takže ho beru jako marketingový údaj, ne fakt.
+5. **Duplikovaná normalizace názvů** existuje v `api_server.py` i v `database.py` (dvě místa pravdy pro kapitalizaci). Drobnost, ale při změně pravidel se snadno rozejdou.
+6. **Nekonzistentní čísla:** README 15 462 taxonů, meta popis webu „15,460+“, geometrie 546 entit vs. 527 entit se záznamem v DB. Nejde nutně o chybu, ale působí to nejednotně.

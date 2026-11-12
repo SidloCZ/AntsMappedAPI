@@ -110,7 +110,7 @@ TRANSLATIONS = {
             ("established.outdoors", "Zavlečený – volná příroda"),
             ("established.indoors", "Zavlečený – budovy a skleníky"),
             ("border.interception", "Vyžaduje ověření"),
-            ("dubious", "Chybné / pochybné"),
+            ("dubious", "Chybné"),
         ],
     },
 }
